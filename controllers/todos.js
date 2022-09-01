@@ -2,16 +2,16 @@ const Todo = require("../models/Todo");
 
 module.exports = {
   getTodos: async (req, res) => {
-    // see where the user makes request
+    // see where the logged in user (req.user) makes request
     console.log(req.user);
     try {
-      // go to the todos database and find the logged in user with unique user id
+      // go to the todos database and find the logged in user with unique user id (where userId equals req.user.id)
       const todoItems = await Todo.find({ userId: req.user.id });
       const itemsLeft = await Todo.countDocuments({
         userId: req.user.id,
         completed: false,
       });
-      // render the todo list of the user with the above unique user id (todoItems) ONLY
+      // render the todo list of the user with the above unique user id (req.user.id in todoItems) ONLY
       res.render("todos.ejs", {
         todos: todoItems,
         left: itemsLeft,
@@ -23,9 +23,12 @@ module.exports = {
   },
   createTodo: async (req, res) => {
     try {
+      // creates todos (req.body)
       await Todo.create({
+        // add todo item
         todo: req.body.todoItem,
         completed: false,
+        // unique userId (req.user.id), so creating a todo for the logged in user ONLY
         userId: req.user.id,
       });
       console.log("Todo has been added!");

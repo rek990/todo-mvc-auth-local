@@ -25,6 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(logger("dev"));
 // Sessions
+// keep user logged in, even when going from page to page
 app.use(
   session({
     secret: "keyboard cat",
