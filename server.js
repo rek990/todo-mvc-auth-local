@@ -10,6 +10,7 @@ const flash = require("express-flash");
 const logger = require("morgan");
 const connectDB = require("./config/database");
 const mainRoutes = require("./routes/main");
+// imports routes for /todos
 const todoRoutes = require("./routes/todos");
 
 require("dotenv").config({ path: "./config/.env" });
@@ -42,7 +43,11 @@ app.use(passport.session());
 
 app.use(flash());
 
+// routes
+// before signup
 app.use("/", mainRoutes);
+// after signup or login (where user is directed to once signed up/logged in)
+// runs todoRoutes to use the appropriate route
 app.use("/todos", todoRoutes);
 
 app.listen(process.env.PORT, () => {

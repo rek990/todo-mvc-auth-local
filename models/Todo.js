@@ -1,5 +1,7 @@
+// import mongoose
 const mongoose = require("mongoose");
 
+// schema for Todo that gives it structure
 const TodoSchema = new mongoose.Schema({
   todo: {
     type: String,
