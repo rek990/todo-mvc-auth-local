@@ -45,6 +45,7 @@ app.use(flash());
 
 // routes
 // before signup
+// runs mainRoutes to use the appropriate route
 app.use("/", mainRoutes);
 // after signup or login (where user is directed to once signed up/logged in)
 // runs todoRoutes to use the appropriate route

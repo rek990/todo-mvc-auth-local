@@ -1,7 +1,8 @@
 // import mongoose
 const mongoose = require("mongoose");
 
-// schema for Todo that gives it structure
+// schema for Todo that gives it structure (can be thought of as a constructor)
+// maps through MongoDB collection to give documents said structure
 const TodoSchema = new mongoose.Schema({
   todo: {
     type: String,
