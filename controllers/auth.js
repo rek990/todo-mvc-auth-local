@@ -13,8 +13,10 @@ exports.getLogin = (req, res) => {
 
 exports.postLogin = (req, res, next) => {
   const validationErrors = [];
+  // If there's no e-mail, push msg into our errors (validationErrors)
   if (!validator.isEmail(req.body.email))
     validationErrors.push({ msg: "Please enter a valid email address." });
+  // If password field is empty, push msg into our errors (validationErrors)
   if (validator.isEmpty(req.body.password))
     validationErrors.push({ msg: "Password cannot be blank." });
 
