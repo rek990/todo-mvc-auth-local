@@ -12,7 +12,7 @@
         <!-- where flash messages show up (passed into the div) from controllers/auth.ejs -->
         <% if (locals.messages.errors) { %>
             <% messages.errors.forEach( el=> { %>
-                <!-- bootstrap class names -->
+                <!-- bootstrap class names that add default style -->
                 <div class="alert alert-danger">
                     <%= el.msg %>
                 </div>
