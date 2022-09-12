@@ -1,4 +1,6 @@
 // local strategy imported from Passport.js (see passportjs.org/packages, passport-local)
+// can be replaced with another strategy of your liking (linked to GH)
+// can also do multiple strategies
 const LocalStrategy = require("passport-local").Strategy;
 const mongoose = require("mongoose");
 const User = require("../models/User");
